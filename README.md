@@ -15,11 +15,12 @@ npm start
 # Running application
 easyio accepts argments, each of which is optional. Below are the arguments with their default values:
 
-`node main.js --name default --port 8080`
+`node main.js --name default --port 8080 --host=192.168.1.121`
 
 `name` - the name that this node will report in API (useful for load-balancing checks)
 
-`port` - port to listen to (host is hardcoded to 127.0.0.1)
+`port` - port to listen to
+`host` - host you want listen
 
 To run with PM2 (example with two instances on different ports to match with `conf/nginx/load-balancing.conf` configuration)
 

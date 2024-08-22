@@ -10,7 +10,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 const args = parseArgs(process.argv.slice(2));
-const { name = 'default', port = '8080'} = args;
+const { name = 'default', host = '127.0.0.1', port = '8080'} = args;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -48,11 +48,11 @@ io.on('connection', (sock) => {
   });
 });
 
-server.listen(+port, '0.0.0.0', (err) => {
+server.listen(+port, host, (err) => {
   if (err) {
     console.log(err.stack);
     return;
   }
 
-  console.log(`Node [${name}] listens on http://127.0.0.1:${port}.`);
+  console.log(`Node [${name}] listens on http://${host}:${port}.`);
 });
